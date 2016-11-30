@@ -50,11 +50,12 @@ public class ScoresWindow extends JFrame implements ActionListener {
 		JPanel main = (JPanel) getContentPane();
 
 		main.setLayout(null);
-		main.setBackground(Color.DARK_GRAY);
+		main.setBackground(Color.CYAN);
 		score.setBounds(420, 15, 80, 30);
 		p1score.setBounds(250, 40, 100, 30);
 		p2score.setBounds(550, 40, 100, 30);
 		show1.setBounds(250, 80, 80, 200);
+		show1.setBackground(Color.LIGHT_GRAY);
 		show2.setBounds(550, 80, 80, 200);
 		back.setBounds(10, 10, 80, 30);
 		back.addActionListener(this);

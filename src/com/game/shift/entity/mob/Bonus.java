@@ -19,7 +19,6 @@ public class Bonus extends Mob {
 	}
 
 	public void update(Screen screen) {
-		
 		move(screen);
 		collisionPlayer(screen);
 	}

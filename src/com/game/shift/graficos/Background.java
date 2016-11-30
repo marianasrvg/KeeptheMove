@@ -6,14 +6,13 @@ import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
-
 import javax.swing.*;
-
 import com.game.shift.Screen;
 import com.game.shift.Timing;
 import com.game.shift.entity.mob.PlayerOne;
 import com.game.shift.entity.mob.PlayerTwo;
 import com.game.shift.entity.obstacle.Particle;
+import com.game.shift.entity.obstacle.Bonus;
 import com.game.shift.entity.obstacle.Obstacles;
 import com.game.shift.input.Keyboard;
 import com.game.shift.level.Level;
@@ -37,7 +36,8 @@ public class Background extends Canvas implements Runnable{
 	public PlayerOne playerone;
 	public PlayerTwo playertwo;
 	private Particle obstacles;
-	//private Timing timer;
+	public Bonus bonus;
+	private Timing timer;
 	private Level level;
 	
 	private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
@@ -45,7 +45,6 @@ public class Background extends Canvas implements Runnable{
 	
 	private Screen screen;
 	private MainMenu myMenu;//Este si es necesario
-	public Timing timer = new Timing();//Agregado solo para que no diera errores 
 	
 	public Background(MainMenu menu){
 		Dimension size = new Dimension(width*scale, height*scale);
@@ -62,6 +61,7 @@ public class Background extends Canvas implements Runnable{
 		playertwo.init(level);
 		obstacles = new Obstacles(20, level);
 		timer = new Timing();
+		bonus = new Bonus(1, level);
 		frameCaracteristicas();
 		myMenu = menu;		
 	}
@@ -130,6 +130,7 @@ public class Background extends Canvas implements Runnable{
 				if( System.currentTimeMillis() - game_time > 1000){ //lo va a hacer una vez por sec. 
 					game_time += 1000;
 					timer.secondLess();
+					bonus.timer.secondLess();
 					frame.setTitle(title+ " | "+ updates + "ups, " + frames + " fps");
 					updates = 0;
 					frames = 0;
@@ -139,9 +140,11 @@ public class Background extends Canvas implements Runnable{
 	
 	public void update(){
 		key.update();
-		playerone.update(screen);
-		playertwo.update(screen);
+		playerone.update();
+		playertwo.update();
 		level.update();
+		bonus.activate();
+		if(bonus.isActive()) bonus.update();
 	}
 	
 	public void render(){
@@ -154,6 +157,7 @@ public class Background extends Canvas implements Runnable{
 		level.render(0, 0, screen);
 		playerone.render(screen);
 		playertwo.render(screen);
+		if(bonus.isActive()) bonus.render(screen);
 		for(int i = 0; i < pixels.length; i++){
 			pixels[i] = screen.pixels[i];
 		}
@@ -161,11 +165,8 @@ public class Background extends Canvas implements Runnable{
 		g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
 		g.setColor(new Color(0xF2F6FF));
 		g.setFont(new Font("Hyperspace", 0, 16));
-		g.drawString("POINTS "+playerone.getPoints(), 450, 400);
-		g.dispose();
-		bs.show();
-		g.drawString("POINTS PLAYER 1 -"+playerone.toString(), 20, 475);
-		g.drawString("POINTS PLAYER 2 -"+playertwo.toString(), 700, 475);
+		g.drawString("POINTS "+playerone.toString(), 30, 475);
+		g.drawString(playertwo.toString()+ " POINTS", 780, 475);
 		g.drawString(timer.timerString(), 440, 25);
 		g.dispose();
 		bs.show();
@@ -174,7 +175,6 @@ public class Background extends Canvas implements Runnable{
 			this.writeScores();
 			this.showEnd();
 		}
-	
 	}
 	
 	public void writeScores(){
@@ -201,6 +201,7 @@ public class Background extends Canvas implements Runnable{
 	}
 	public void showEnd(){
 		if(running == false){
+			level.clearList();
 			this.setVisible(false);
 			frame.setVisible(false);
 			new GameOver(myMenu, this).showMe();

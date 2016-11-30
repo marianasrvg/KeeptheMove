@@ -24,7 +24,7 @@ public class Obstacles extends Particle{
 	
 	public Obstacles(int amount, Level level){
 		this(randomX(true), randomY(), level);
-		for(int i = 0; i < (amount)/2; i++){
+		for(int i = 0; i < amount/2; i++){
 			addObstacle(new Obstacles(randomX(true), randomY(), level));
 			addObstacle(new Obstacles(randomX(false), randomY(), level));
 		}
@@ -36,9 +36,7 @@ public class Obstacles extends Particle{
 			return (int)(random.nextDouble()*(150-32)+16);
 		return (int)(random.nextDouble()*(Background.getWidthS()/2-32) + (Background.getWidthS()/2+16));
 	}
-	private static int randomY(){
-		return (int)(random.nextDouble()*(Background.getHeightS()-45)+ 16);
-	}
+
 	public void addObstacle(boolean field){
 		addObstacle(new Obstacles(randomX(field),randomY(), this.level));
 	}

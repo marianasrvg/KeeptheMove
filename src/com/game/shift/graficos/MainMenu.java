@@ -51,7 +51,7 @@ public class MainMenu extends JFrame implements ActionListener{
 		ImageIcon anim4 = new ImageIcon("res/textures/arrow.gif");
 		
 		main.setLayout(null);
-		main.setBackground(Color.LIGHT_GRAY);
+		main.setBackground(Color.CYAN);
 		mainTitle.setBounds(355, 50, 180, 120);
 		mainTitle.setIcon(mainIcon);
 		//mainTitle.setFont();

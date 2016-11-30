@@ -18,8 +18,8 @@ public class PlayerOne extends Player {
 		super(x, y, input);
 	}
 		
-	public void update(Screen screen){
-		collisionObstacles();
+	public void update(){
+		if(collisionObstacles()) setPoints(-1);
 		int xa = 0, ya = 0;
 		if(input.up1) ya--;
 		if(input.down1) ya++;
