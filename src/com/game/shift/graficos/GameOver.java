@@ -25,17 +25,16 @@ public class GameOver extends JFrame implements ActionListener{
 	private Background bck;
 	
 	public GameOver(MainMenu thatMenu, Background game){
+		goMenu = thatMenu;
+		bck = game;
 		this.setTitle("Game over");
 		this.setSize(600,250);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
 		this.setUndecorated(false);
 		this.setLocationRelativeTo(null);
-		goMenu = thatMenu;
-		bck = game;
 		this.initComponents();
 		this.setVisible(true);
-		
 	}
 	
 	private void initComponents(){
@@ -54,7 +53,7 @@ public class GameOver extends JFrame implements ActionListener{
 		sJ2.setBounds(400, 120, 80, 30);
 		sJ2.setText(bck.playertwo.toString());
 		goBack.setBounds(210, 190, 160, 25);
-		
+		goBack.setEnabled(true);
 		goBack.addActionListener(this);
 		
 		main.add(gameTitle);

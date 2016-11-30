@@ -13,5 +13,6 @@ public class Shift {
 		game.start();
 		*/
 		new MainMenu();
+		Songs.playSongMenu();
 	}
 }

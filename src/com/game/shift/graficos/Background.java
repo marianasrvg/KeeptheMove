@@ -47,7 +47,7 @@ public class Background extends Canvas implements Runnable{
 	private MainMenu myMenu;//Este si es necesario
 	public Timing timer = new Timing();//Agregado solo para que no diera errores 
 	
-	public Background(){
+	public Background(MainMenu menu){
 		Dimension size = new Dimension(width*scale, height*scale);
 		setPreferredSize(size);
 		
@@ -63,7 +63,7 @@ public class Background extends Canvas implements Runnable{
 		obstacles = new Obstacles(20, level);
 		timer = new Timing();
 		frameCaracteristicas();
-				
+		myMenu = menu;		
 	}
 	
 	private void frameCaracteristicas(){
