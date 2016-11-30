@@ -2,19 +2,18 @@ package com.game.shift.entity.mob;
 
 import com.game.shift.Screen;
 import com.game.shift.entity.obstacle.Particle;
-import com.game.shift.graficos.Background;
 import com.game.shift.graficos.Sprite;
-import com.game.shift.graficos.SpriteSheet;
 import com.game.shift.input.Keyboard;
-import com.game.shift.level.tiles.TileCoordinate;
 
 public class Player extends Mob {
 	protected Keyboard input;
 	protected int points;
+	protected final int MAX_POINT = 100;
 	
 	public Player(Keyboard input){
 		this.input = input;
 		this.sprite = Sprite.player;
+		this.points = MAX_POINT;
 	}
 	
 	public Player(int x, int y, Keyboard input){
@@ -72,12 +71,13 @@ public class Player extends Mob {
 		if(!collision(xa, ya)){
 			x += xa;
 			y += ya;
-		} 
+		}else
+			setPoints(-5);
+
+		
 		xy_tile.setXY(x, y);
 		//System.out.println("xt:"+ xy_tile.x()+ " yt:" + xy_tile.y());
-		//System.out.println("area "+ xy_tile.getArea());
-		
-		
+		//System.out.println("area "+ xy_tile.getArea());	
 	}
 	
 	protected boolean collision(int xa, int ya){
@@ -98,10 +98,14 @@ public class Player extends Mob {
 					== this.xy_tile.getArea()){
 				o = level.getObstacle().get(i);
 				if(this.x <= o.x() && 
-					(this.x)*this.sprite.SIZE >= (o.x())*o.getSpriteSIZE()&& 
+					(this.x)+this.sprite.SIZE >= (o.x())+o.getSpriteSIZE()&& 
 					this.y <= o.y() &&
-					(this.y)*this.sprite.SIZE >= (o.x())*o.getSpriteSIZE()){
-					System.out.println("Colision");
+					(this.y)+this.sprite.SIZE >= (o.y())+o.getSpriteSIZE()){
+					/*System.out.println(" x - " + this.x + " o.x" + o.x());
+					System.out.println(" xsize - " + (this.x+this.sprite.SIZE) + " o.xsize" + (o.x()+o.getSpriteSIZE()));
+					System.out.println(" y - " + this.y + " o.y" + o.x());
+					System.out.println(" ysize - " + (this.y+this.sprite.SIZE) + " o.ysize" + (o.y()+o.getSpriteSIZE()));*/
+					setPoints(-1);
 				}
 			}
 		}

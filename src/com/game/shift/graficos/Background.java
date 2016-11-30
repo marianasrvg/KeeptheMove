@@ -10,16 +10,12 @@ import java.io.FileWriter;
 import javax.swing.*;
 
 import com.game.shift.Screen;
-import com.game.shift.Timing;
-import com.game.shift.entity.mob.Bonus;
 import com.game.shift.entity.mob.PlayerOne;
 import com.game.shift.entity.mob.PlayerTwo;
-import com.game.shift.entity.mob.Wall;
 import com.game.shift.entity.obstacle.Particle;
 import com.game.shift.entity.obstacle.Obstacles;
 import com.game.shift.input.Keyboard;
 import com.game.shift.level.Level;
-import com.game.shift.level.tiles.TileCoordinate;
 
 public class Background extends Canvas implements Runnable{
 
@@ -27,7 +23,7 @@ public class Background extends Canvas implements Runnable{
 	private static int width = 300;
 	private static int height = 168;
 	private static int scale = 3;
-	public static String title = "Shift";
+	public static String title = "Keep the MOVE!";
 	public static final int N_OBS = 10;
 	private static final String loc1 = "res/files/score_p1.txt";
 	private static final String loc2 = "res/files/score_p2.txt";
@@ -160,7 +156,7 @@ public class Background extends Canvas implements Runnable{
 		g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
 		g.setColor(new Color(0xF2F6FF));
 		g.setFont(new Font("Hyperspace", 0, 16));
-		g.drawString("X: "+playerone.x+" Y: "+playerone.y, 450, 400);
+		g.drawString("POINTS "+playerone.getPoints(), 450, 400);
 		g.dispose();
 		bs.show();
 	}
