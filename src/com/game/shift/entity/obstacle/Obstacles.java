@@ -37,7 +37,7 @@ public class Obstacles extends Particle{
 		return (int)(random.nextDouble()*(Background.getWidthS()/2-32) + (Background.getWidthS()/2+16));
 	}
 	private static int randomY(){
-		return (int)(random.nextDouble()*(Background.getHeightS()-40)+ 16);
+		return (int)(random.nextDouble()*(Background.getHeightS()-45)+ 16);
 	}
 	public void addObstacle(boolean field){
 		addObstacle(new Obstacles(randomX(field),randomY(), this.level));
