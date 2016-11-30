@@ -59,4 +59,7 @@
 94
 74
 98
+<<<<<<< HEAD
+>>>>>>> origin/master
+=======
 >>>>>>> origin/master
