@@ -12,7 +12,7 @@ public class Shift {
 		/*Background game = new Background();
 		game.start();
 		*/
-		//new MainMenu();
-		new GameOver(new MainMenu(), new Background());
+		new MainMenu();
+		//new GameOver(new MainMenu(), new Background());
 	}
 }

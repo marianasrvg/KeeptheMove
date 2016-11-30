@@ -4,7 +4,7 @@ import java.util.*;
 
 import com.game.shift.Screen;
 import com.game.shift.entity.Entity;
-import com.game.shift.entity.mob.Player;
+import com.game.shift.graficos.Background;
 import com.game.shift.graficos.Sprite;
 import com.game.shift.level.Level;
 import com.game.shift.level.tiles.TileCoordinate;
@@ -83,5 +83,9 @@ public class Particle extends Entity {
 	}
 	public int y(){
 		return (int)y;
+	}
+	
+	protected static int randomY(){
+		return (int)(random.nextDouble()*(Background.getHeightS()-45)+ 16);
 	}
 }
