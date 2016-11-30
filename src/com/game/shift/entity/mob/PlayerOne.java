@@ -59,7 +59,7 @@ public class PlayerOne extends Player {
 			if (level.getObstacle().get(i).xy_tile.getArea() == 5 ||
 					level.getObstacle().get(i).xy_tile.getArea() == 7) {
 				o = level.getObstacle().get(i);
-				o.setX(o.x()+17);
+				o.setX(o.x()+20);
 			}
 		}
 	}
@@ -70,7 +70,7 @@ public class PlayerOne extends Player {
 			if (level.getObstacle().get(i).xy_tile.getArea() == 2 ||
 					level.getObstacle().get(i).xy_tile.getArea() == 4) {
 				o = level.getObstacle().get(i);
-				o.setX(o.x()-17);
+				o.setX(o.x()-20);
 			}
 		}
 	}
