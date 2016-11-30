@@ -15,6 +15,8 @@ public class Level {
 	private int[] tilesInt;
 	protected int[] tiles;
 	public static Level Ground = new L1_Ground("/levels/level.png");
+	public static Level Bonus_Ground_1 = new L1_Ground("/levels/level_1.png");
+	public static Level Bonus_Ground_2 = new L1_Ground("/levels/level_2.png");
 	
 	private List<Entity> entities = new ArrayList<Entity>();
 	public List<Particle> obstacles = new ArrayList<Particle>();
@@ -29,13 +31,12 @@ public class Level {
 	
 	public Level(String path){
 		loadLevel(path);
-		generateLevel();
-		
+		generateLevel();	
 	}
 	
 	protected void generateLevel(){}
 	
-	protected void loadLevel(String path){}
+	public void loadLevel(String path){}
 	
 	public void update(){
 		for(int i = 0; i < entities.size(); i++)
@@ -43,8 +44,6 @@ public class Level {
 		for(int i = 0; i < obstacles.size(); i++)
 			obstacles.get(i).update();
 	}
-	
-	private void time(){}
 	
 	public void render(int xScroll, int yScroll, Screen screen){
 		screen.setOffset(xScroll, yScroll);

@@ -37,6 +37,7 @@ public class Bonus extends Particle {
 		for(int i = 0; i < amount-1; i++){
 			bonus.add(new Bonus(randomX(), randomY(), level));
 		}
+		bonus.add(this);
 	}
 	
 	private static int randomX(){
@@ -85,6 +86,7 @@ public class Bonus extends Particle {
 			if(taken){
 				x = randomX();
 				y = randomY();
+				taken = false;
 			}
 		}
 	}

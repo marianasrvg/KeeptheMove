@@ -12,7 +12,7 @@ public class L1_Ground extends Level {
 		super(path);
 	}
 
-	protected void loadLevel(String path){
+	public void loadLevel(String path){
 		try{
 			BufferedImage image = ImageIO.read(L1_Ground.class.getResource(path));
 			int w = width = image.getWidth();

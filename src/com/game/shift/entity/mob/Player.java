@@ -2,23 +2,30 @@ package com.game.shift.entity.mob;
 
 
 import com.game.shift.Screen;
+import com.game.shift.Timing;
 import com.game.shift.entity.obstacle.Bonus;
 import com.game.shift.entity.obstacle.Particle;
+import com.game.shift.graficos.Background;
 import com.game.shift.graficos.Sprite;
 import com.game.shift.input.Keyboard;
+import com.game.shift.level.Level;
 
 public class Player extends Mob {
 	protected Keyboard input;
 	protected int points;
 	protected final int MAX_POINT = 100;
-	protected Bonus bonus;
+	protected Background world;
+	protected int minusObstacle = 0;
+	protected int minusWall = -5;
+	protected Timing timer_b = new Timing();
+	protected int timing = 600;
+	protected boolean bonus_active = false;
 
-	public Player(Keyboard input, Bonus bonus) {
+	public Player(Keyboard input, Background world) {
 		this.input = input;
 		this.sprite = Sprite.player;
 		this.points = MAX_POINT;
-		this.bonus = bonus;
-		System.out.println(bonus.x());
+		this.world = world;
 	}
 
 	public Player(int x, int y, Keyboard input) {
@@ -46,8 +53,6 @@ public class Player extends Mob {
 		screen.renderMob(x, y, sprite);
 	}
 
-
-
 	public void move(int xa, int ya) {
 		if (xa != 0 && ya != 0) {
 			move(xa, 0);
@@ -63,7 +68,7 @@ public class Player extends Mob {
 			x += xa;
 			y += ya;
 		} else
-			setPoints(-5);
+			setPoints(minusWall);
 
 		xy_tile.setXY(x, y);
 	}
@@ -90,11 +95,6 @@ public class Player extends Mob {
 					(this.x)+this.sprite.SIZE+o.getSpriteSIZE() >= (o.x())+o.getSpriteSIZE()&& 
 					this.y-o.getSpriteSIZE() <= o.y() &&
 					(this.y)+this.sprite.SIZE+o.getSpriteSIZE() >= (o.y())+o.getSpriteSIZE()){
-					/*System.out.println(" x - " + this.x + " o.x" + o.x());
-					System.out.println(" xsize - " + (this.x+this.sprite.SIZE) + " o.xsize" + (o.x()+o.getSpriteSIZE()));
-					System.out.println(" y - " + this.y + " o.y" + o.x());
-					System.out.println(" ysize - " + (this.y+this.sprite.SIZE) + " o.ysize" + (o.y()+o.getSpriteSIZE()));*/
-					//setPoints(-1);
 					collision = true;
 					}
 				}
@@ -102,26 +102,70 @@ public class Player extends Mob {
 		return collision;
 	}
 	
-	protected void collisionBonus(){
+	protected boolean collisionBonus(){
+		if(world.bonus.isTaken()) return false;
 		Bonus b;
-		System.out.println(bonus.getBonus().size());
-		for(int i = 0; i < bonus.getBonus().size(); i++){
-			System.out.println("IN");
-			if (bonus.getBonus().get(i).xy_tile.getArea() == this.xy_tile.getArea()) {
-				b = bonus.getBonus().get(i);
+		for(int i = 0; i < world.bonus.getBonus().size(); i++){
+			if (world.bonus.getBonus().get(i).xy_tile.getArea() == this.xy_tile.getArea()) {
+				b = world.bonus.getBonus().get(i);
 				if(this.x-b.getSpriteSIZE() <= b.x() && 
 					(this.x)+this.sprite.SIZE+b.getSpriteSIZE() >= (b.x())+b.getSpriteSIZE()&& 
 					this.y-b.getSpriteSIZE() <= b.y() &&
 					(this.y)+this.sprite.SIZE+b.getSpriteSIZE() >= (b.y())+b.getSpriteSIZE()){
-				/*	System.out.println(" x - " + this.x + " o.x" +b.x());
-					System.out.println(" xsize - " + (this.x+this.sprite.SIZE) + " o.xsize" + (b.x()+b.getSpriteSIZE()));
-					System.out.println(" y - " + this.y + " o.y" + b.x());
-					System.out.println(" ysize - " + (this.y+this.sprite.SIZE) + " o.ysize" + (b.y()+b.getSpriteSIZE()));*/
-					//setPoints(-1);
-					System.out.println("colision");
-					bonus.setActive(false);
+					world.bonus.setActive(false);
+					world.bonus.setTaken(true);
+					return true;
 					}
 				}
 			}
+		return false;
 		}
+
+	protected void chooseBonus(){
+		int r = (int)(random.nextDouble()*3);
+		switch (r){
+		case 0:
+			BonusMorePoints();
+			break;
+		case 1:
+			Immunity();
+			bonus_active = true;
+			break;
+		case 2:
+			ChangeMap();
+			bonus_active = true;
+			break;
+		case 3:
+			ColorChange();
+			bonus_active = true;
+			break;
+		}
+		
+	}
+
+	protected void ColorChange() {
+	}
+
+	protected void Immunity() {
+		minusWall = 0;
+		minusObstacle = 0;
+		System.out.println("BONUS IMMUNITY");
+	}
+
+	protected void ChangeMap() {
+		world.level.loadLevel("/levels/level_1.png");
+	}
+
+	protected void BonusMorePoints() {
+		setPoints(10);
+		System.out.println("BONUS + 10");
+	}
+	
+	protected void reverseBonus(){
+		timing = 600;
+		minusWall = -5;
+		minusObstacle = 0;
+		world.level.loadLevel("/levels/level.png");
+	}
+
 }

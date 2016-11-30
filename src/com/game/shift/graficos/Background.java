@@ -15,6 +15,7 @@ import com.game.shift.entity.obstacle.Particle;
 import com.game.shift.entity.obstacle.Bonus;
 import com.game.shift.entity.obstacle.Obstacles;
 import com.game.shift.input.Keyboard;
+import com.game.shift.level.L1_Ground;
 import com.game.shift.level.Level;
 
 public class Background extends Canvas implements Runnable{
@@ -38,7 +39,7 @@ public class Background extends Canvas implements Runnable{
 	private Particle obstacles;
 	public Bonus bonus;
 	private Timing timer;
-	private Level level;
+	public Level level;
 	
 	private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 	private int[] pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
@@ -53,16 +54,16 @@ public class Background extends Canvas implements Runnable{
 		screen = new Screen(width,height);
 		frame = new JFrame();
 		key = new Keyboard();
-		level = Level.Ground;
+		//level = Level.Ground;
+		level = new L1_Ground("/levels/level.png");
 		bonus = new Bonus(1, level);
-		playerone = new PlayerOne(key, this.bonus);
-		playerone.init(level);
-		playertwo = new PlayerTwo(key, this.bonus);
-		playertwo.init(level);
 		obstacles = new Obstacles(20, level);
 		timer = new Timing();
-		
 		frameCaracteristicas();
+		playerone = new PlayerOne(key, this);
+		playerone.init(level);
+		playertwo = new PlayerTwo(key, this);
+		playertwo.init(level);
 		myMenu = menu;		
 	}
 	
