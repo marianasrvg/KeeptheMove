@@ -37,6 +37,7 @@ public class Background extends Canvas implements Runnable{
 	public PlayerOne playerone;
 	public PlayerTwo playertwo;
 	private Particle obstacles;
+	private Timing timer;
 	private Level level;
 	
 	private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
@@ -60,7 +61,7 @@ public class Background extends Canvas implements Runnable{
 		playertwo = new PlayerTwo(key);
 		playertwo.init(level);
 		obstacles = new Obstacles(20, level);
-		
+		timer = new Timing();
 		frameCaracteristicas();
 				
 	}
@@ -109,7 +110,7 @@ public class Background extends Canvas implements Runnable{
 	public void run() {
 		
 		long lastTime = System.nanoTime();
-		long timer = System.currentTimeMillis(); 
+		long game_time = System.currentTimeMillis(); 
 		final double ns = 1000000000.0 / 60.0; 
 		double delta = 0;
 		int frames = 0;
@@ -126,8 +127,9 @@ public class Background extends Canvas implements Runnable{
 			}
 			render();
 			frames++;
-				if( System.currentTimeMillis() - timer > 1000){ //lo va a hacer una vez por sec. 
-					timer += 1000;
+				if( System.currentTimeMillis() - game_time > 1000){ //lo va a hacer una vez por sec. 
+					game_time += 1000;
+					timer.secondLess();
 					frame.setTitle(title+ " | "+ updates + "ups, " + frames + " fps");
 					updates = 0;
 					frames = 0;
@@ -159,6 +161,7 @@ public class Background extends Canvas implements Runnable{
 		g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
 		g.setColor(new Color(0xF2F6FF));
 		g.setFont(new Font("Hyperspace", 0, 16));
+<<<<<<< HEAD
 		g.drawString("POINTS "+playerone.getPoints(), 450, 400);
 		g.dispose();
 		bs.show();
@@ -167,6 +170,14 @@ public class Background extends Canvas implements Runnable{
 			this.writeScores();
 			this.showEnd();
 		}
+=======
+		g.drawString("POINTS PLAYER 1 -"+playerone.toString(), 20, 475);
+		g.drawString("POINTS PLAYER 2 -"+playertwo.toString(), 700, 475);
+		g.drawString(timer.timerString(), 440, 25);
+		g.dispose();
+		bs.show();
+		
+>>>>>>> origin/master
 	}
 	
 	public void writeScores(){
