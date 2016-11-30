@@ -55,9 +55,9 @@ public class Background extends Canvas implements Runnable{
 		key = new Keyboard();
 		level = Level.Ground;
 		bonus = new Bonus(1, level);
-		playerone = new PlayerOne(key, bonus);
+		playerone = new PlayerOne(key, this.bonus);
 		playerone.init(level);
-		playertwo = new PlayerTwo(key, bonus);
+		playertwo = new PlayerTwo(key, this.bonus);
 		playertwo.init(level);
 		obstacles = new Obstacles(20, level);
 		timer = new Timing();
