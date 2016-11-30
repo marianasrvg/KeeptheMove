@@ -25,7 +25,6 @@ public class Background extends Canvas implements Runnable{
 	private static int height = 168;
 	private static int scale = 3;
 	public static String title = "Keep the MOVE!";
-	public static final int N_OBS = 10;
 	private static final String loc1 = "res/files/score_p1.txt";
 	private static final String loc2 = "res/files/score_p2.txt";
 	

@@ -9,7 +9,7 @@ public class Obstacles extends Particle{
 	public Obstacles(int x, int y, Level level) {
 		super(x, y, level);
 		speed = 1.2;
-		sprite = Sprite.obstaculo_green;
+		sprite = Sprite.obstaculo_1;
 		nx = speed * Math.cos(angle);
 		ny = speed * Math.sin(angle);
 	}

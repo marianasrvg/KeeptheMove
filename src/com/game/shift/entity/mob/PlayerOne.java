@@ -1,6 +1,7 @@
 package com.game.shift.entity.mob;
 
 import com.game.shift.graficos.Background;
+import com.game.shift.graficos.Sprite;
 import com.game.shift.input.Keyboard;
 import com.game.shift.level.tiles.TileCoordinate;
 
@@ -47,6 +48,6 @@ public class PlayerOne extends Player {
 	}
 	
 	protected void ColorChange() {
-		
+		world.obstacles.changeSprite(Sprite.obstaculo_2);
 	}
 }

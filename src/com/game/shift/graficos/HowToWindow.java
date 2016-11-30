@@ -14,14 +14,14 @@ public class HowToWindow extends JFrame implements ActionListener{
 	private JLabel title = new JLabel("How to play");
 	private JLabel instructions1 = new JLabel("Dont touch the little squares!!");
 	private JLabel instructions2 = new JLabel("Dont touch the borders of the screen ...");
-	private JLabel instructions3 = new JLabel("Always try to catch the orange square!! (it gives you good bonuses)");
+	private JLabel instructions3 = new JLabel("Always try to catch the big square!! (it gives you good bonuses)");
 	private JLabel instructions4 = new JLabel("And remember to keep moving");
 	private JLabel a1 = new JLabel("");
 	private JLabel a2 = new JLabel("");
 	private JLabel a3 = new JLabel("");
 	private JLabel a4 = new JLabel("");
-	private JButton headL = new JButton("");
-	private JButton headR = new JButton("");
+	private JLabel headL = new JLabel("");
+	private JLabel headR = new JLabel("");
 	private JButton back = new JButton("Back to main menu");
 	private MainMenu backTo;
 	
@@ -74,6 +74,7 @@ public class HowToWindow extends JFrame implements ActionListener{
 		headL.setEnabled(true);
 		headR.setEnabled(true);
 		back.setBounds(100, 350, 190, 30);
+		back.setBackground(Color.LIGHT_GRAY);
 		back.setEnabled(true);
 		back.addActionListener(this);
 		
