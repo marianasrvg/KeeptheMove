@@ -1,6 +1,7 @@
 package com.game.shift.entity.mob;
 
 import com.game.shift.Screen;
+import com.game.shift.entity.obstacle.Bonus;
 import com.game.shift.graficos.Background;
 import com.game.shift.graficos.Sprite;
 import com.game.shift.input.Keyboard;
@@ -8,8 +9,8 @@ import com.game.shift.level.tiles.TileCoordinate;
 
 public class PlayerTwo extends Player {
 	
-	public PlayerTwo(Keyboard input){
-		super(input);
+	public PlayerTwo(Keyboard input, Bonus bonus){
+		super(input, bonus);
 		posRandom();
 		xy_tile = new TileCoordinate(x, y);
 	}

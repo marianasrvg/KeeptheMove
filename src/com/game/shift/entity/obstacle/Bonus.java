@@ -88,4 +88,8 @@ public class Bonus extends Particle {
 			}
 		}
 	}
+
+	public List<Bonus> getBonus(){
+		return bonus;
+	}
 }

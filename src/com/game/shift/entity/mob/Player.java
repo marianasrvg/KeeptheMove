@@ -1,6 +1,8 @@
 package com.game.shift.entity.mob;
 
+
 import com.game.shift.Screen;
+import com.game.shift.entity.obstacle.Bonus;
 import com.game.shift.entity.obstacle.Particle;
 import com.game.shift.graficos.Sprite;
 import com.game.shift.input.Keyboard;
@@ -9,11 +11,13 @@ public class Player extends Mob {
 	protected Keyboard input;
 	protected int points;
 	protected final int MAX_POINT = 100;
+	protected Bonus bonus;
 
-	public Player(Keyboard input) {
+	public Player(Keyboard input, Bonus bonus) {
 		this.input = input;
 		this.sprite = Sprite.player;
 		this.points = MAX_POINT;
+		this.bonus = bonus;
 	}
 
 	public Player(int x, int y, Keyboard input) {
@@ -41,27 +45,7 @@ public class Player extends Mob {
 		screen.renderMob(x, y, sprite);
 	}
 
-	public void move(int xa, int ya, Screen screen) {
-		if (xa != 0 && y != 0) {
-			move(xa, 0);
-			move(ya, 0);
-		}
-		if (xa > 0)
-			dir = 1;
-		if (xa < 0)
-			dir = 3;
-		if (ya > 0)
-			dir = 2;
-		if (ya < 0)
-			dir = 0;
 
-		if (!collision(xa, ya)) {
-			x += xa;
-			y += ya;
-		} else {
-			setPoints(-5);
-		}
-	}
 
 	public void move(int xa, int ya) {
 		if (xa != 0 && ya != 0) {
@@ -69,14 +53,10 @@ public class Player extends Mob {
 			move(0, ya);
 			return;
 		}
-		if (xa > 0)
-			dir = 1;
-		if (xa < 0)
-			dir = 3;
-		if (ya > 0)
-			dir = 2;
-		if (ya < 0)
-			dir = 0;
+		if (xa > 0) dir = 1;
+		if (xa < 0) dir = 3;
+		if (ya > 0) dir = 2;
+		if (ya < 0) dir = 0;
 
 		if (!collision(xa, ya)) {
 			x += xa;
@@ -85,8 +65,6 @@ public class Player extends Mob {
 			setPoints(-5);
 
 		xy_tile.setXY(x, y);
-		// System.out.println("xt:"+ xy_tile.x()+ " yt:" + xy_tile.y());
-		// System.out.println("area "+ xy_tile.getArea());
 	}
 
 	protected boolean collision(int xa, int ya) {
@@ -122,4 +100,24 @@ public class Player extends Mob {
 			}
 		return collision;
 	}
+	
+	protected void collisionBonous(){
+		Bonus b;
+		for(int i = 0; i < bonus.getBonus().size(); i++){
+			if (bonus.getBonus().get(i).xy_tile.getArea() == this.xy_tile.getArea()) {
+				b = bonus.getBonus().get(i);
+				if(this.x-b.getSpriteSIZE() <= b.x() && 
+					(this.x)+this.sprite.SIZE+b.getSpriteSIZE() >= (b.x())+b.getSpriteSIZE()&& 
+					this.y-b.getSpriteSIZE() <= b.y() &&
+					(this.y)+this.sprite.SIZE+b.getSpriteSIZE() >= (b.y())+b.getSpriteSIZE()){
+					/*System.out.println(" x - " + this.x + " o.x" + o.x());
+					System.out.println(" xsize - " + (this.x+this.sprite.SIZE) + " o.xsize" + (o.x()+o.getSpriteSIZE()));
+					System.out.println(" y - " + this.y + " o.y" + o.x());
+					System.out.println(" ysize - " + (this.y+this.sprite.SIZE) + " o.ysize" + (o.y()+o.getSpriteSIZE()));*/
+					//setPoints(-1);
+					//bonus.taken = true;
+					}
+				}
+			}
+		}
 }

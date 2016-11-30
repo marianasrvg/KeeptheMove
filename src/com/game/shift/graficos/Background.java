@@ -54,14 +54,14 @@ public class Background extends Canvas implements Runnable{
 		frame = new JFrame();
 		key = new Keyboard();
 		level = Level.Ground;
-		
-		playerone = new PlayerOne(key);
+		bonus = new Bonus(1, level);
+		playerone = new PlayerOne(key, bonus);
 		playerone.init(level);
-		playertwo = new PlayerTwo(key);
+		playertwo = new PlayerTwo(key, bonus);
 		playertwo.init(level);
 		obstacles = new Obstacles(20, level);
 		timer = new Timing();
-		bonus = new Bonus(1, level);
+		
 		frameCaracteristicas();
 		myMenu = menu;		
 	}
