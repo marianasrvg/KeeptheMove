@@ -6,6 +6,7 @@ import com.game.shift.graficos.Background;
 import com.game.shift.graficos.Sprite;
 import com.game.shift.graficos.SpriteSheet;
 import com.game.shift.input.Keyboard;
+import com.game.shift.level.tiles.TileCoordinate;
 
 public class Player extends Mob {
 	protected Keyboard input;
@@ -72,6 +73,10 @@ public class Player extends Mob {
 			x += xa;
 			y += ya;
 		} 
+		xy_tile.setXY(x, y);
+		System.out.println("xt:"+ xy_tile.x()+ " yt:" + xy_tile.y());
+		System.out.println("area "+ xy_tile.getArea());
+		
 	}
 	
 	protected boolean collision(int xa, int ya){
@@ -83,6 +88,18 @@ public class Player extends Mob {
 		}		
 		return solid;
 	}
-
+	
+	protected boolean collisionObstacles(){
+		boolean collision = false;
+		for(int i = 0; i < level.getObstacle().size(); i++){
+			if(level.getObstacle().get(i).xy_tile.getArea() 
+					== this.xy_tile.getArea()){
+				if(this.x <= level.getObstacle().get(i).x )
+			}
+		}
+		return collision;
+	}
+	
+	
 	
 }

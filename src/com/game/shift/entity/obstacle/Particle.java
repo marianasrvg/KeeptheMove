@@ -4,8 +4,10 @@ import java.util.*;
 
 import com.game.shift.Screen;
 import com.game.shift.entity.Entity;
+import com.game.shift.entity.mob.Player;
 import com.game.shift.graficos.Sprite;
 import com.game.shift.level.Level;
+import com.game.shift.level.tiles.TileCoordinate;
 
 public class Particle extends Entity {
 	
@@ -16,6 +18,7 @@ public class Particle extends Entity {
 	protected static final Random random = new Random();
 	protected Sprite sprite;
 	
+	
 	public Particle(){}
 	
 	public Particle(int x, int y, Level level){
@@ -23,6 +26,7 @@ public class Particle extends Entity {
 		this.x = x;
 		this.y = y;
 		this.init(level);
+		xy_tile = new TileCoordinate(x, y);
 		this.nx = random.nextGaussian();
 		this.ny = random.nextGaussian();
 		this.angle = Math.atan2(nx, ny);
@@ -66,10 +70,22 @@ public class Particle extends Entity {
 		}
 		x += nx;
 		y += ny;
+		
+		xy_tile.setXY((int)x, (int)y);
 	}
 	
 	public void render(Screen screen){
 		screen.renderTile((int)x, (int)y, sprite);
 	}
 
+/*	protected boolean playerCollsion(double x, double y, int size){
+		boolean collision = false;
+		for(int i = 0; i < level.getEntity().size(); i++){
+			if(!(level.getEntity().get(i) instanceof Player)) continue;
+			if(level.getEntity().get(i).xy_tile.getArea() == this.xy_tile.getArea()){
+				checkCollision()
+			}
+		}
+		return collision;
+	}*/
 }
