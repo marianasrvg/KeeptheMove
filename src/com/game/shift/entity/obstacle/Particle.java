@@ -98,4 +98,8 @@ public class Particle extends Entity {
 	private void setSprite(Sprite sprite) {
 		this.sprite = sprite;
 	}
+	
+	public void setX(double x){
+		this.x = x;
+	}
 }

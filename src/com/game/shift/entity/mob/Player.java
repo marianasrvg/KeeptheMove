@@ -15,7 +15,7 @@ public class Player extends Mob {
 	protected final int MAX_POINT = 100;
 	protected Background world;
 	protected int minusObstacle = -1;
-	protected int minusWall = -5;
+	protected int minusWall = -3;
 	protected Timing timer_b = new Timing();
 	protected int timing = 600;
 	protected boolean bonus_active = false;
@@ -122,9 +122,9 @@ public class Player extends Mob {
 		}
 
 	protected void chooseBonus(){
-		int r = (int)(random.nextDouble()*4);
+		int r = (int)(random.nextDouble()*1);
 		switch (r){
-		case 0:
+		case 2:
 			BonusMorePoints();
 			this.news = "+10 POINTS";
 			break;
@@ -133,7 +133,7 @@ public class Player extends Mob {
 			this.news = "10' IMMUNITY";
 			bonus_active = true;
 			break;
-		case 2:
+		case 0:
 			ChangeMap();
 			this.news = "10' MORE FIELD";
 			bonus_active = true;
@@ -165,8 +165,9 @@ public class Player extends Mob {
 	
 	protected void reverseBonus(){
 		timing = 600;
-		minusWall = -5;
+		minusWall = -3;
 		minusObstacle = -1;
+		returnTheWall();
 		world.level.loadLevel("/levels/level.png");
 		world.obstacles.changeSprite(Sprite.obstaculo_1);
 		setSprite(Sprite.player);
@@ -177,7 +178,11 @@ public class Player extends Mob {
 		this.sprite = Sprite.player_bonus;
 	}
 
+	
 	public String getNews(){
 		return news;
 	}
+	
+	protected void moveTheWall(){}
+	protected void returnTheWall(){}
 }
