@@ -46,6 +46,8 @@ public class Background extends Canvas implements Runnable{
 	private int[] pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
 	
 	private Screen screen;
+	private MainMenu myMenu;//Este si es necesario
+	public Timing timer = new Timing();//Agregado solo para que no diera errores 
 	
 	public Background(){
 		Dimension size = new Dimension(width*scale, height*scale);
@@ -163,6 +165,11 @@ public class Background extends Canvas implements Runnable{
 		g.drawString("X: "+playerone.x+" Y: "+playerone.y, 450, 400);
 		g.dispose();
 		bs.show();
+		if(playerone.getPoints() < 0 || playertwo.getPoints() < 0 || timer .getTime() == 0){
+			running = false;
+			this.writeScores();
+			this.showEnd();
+		}
 	}
 	
 	public void writeScores(){
@@ -185,6 +192,13 @@ public class Background extends Canvas implements Runnable{
 			}catch(Exception e){
 				System.out.println(e.getStackTrace());
 			}
+		}
+	}
+	public void showEnd(){
+		if(running == false){
+			this.setVisible(false);
+			frame.setVisible(false);
+			new GameOver(myMenu, this).showMe();
 		}
 	}
 }
