@@ -97,10 +97,10 @@ public class Player extends Mob {
 			if(level.getObstacle().get(i).xy_tile.getArea() 
 					== this.xy_tile.getArea()){
 				o = level.getObstacle().get(i);
-				if(this.x <= o.x() && 
-					(this.x)+this.sprite.SIZE >= (o.x())+o.getSpriteSIZE()&& 
-					this.y <= o.y() &&
-					(this.y)+this.sprite.SIZE >= (o.y())+o.getSpriteSIZE()){
+				if(this.x-o.getSpriteSIZE() <= o.x() && 
+					(this.x)+this.sprite.SIZE+o.getSpriteSIZE() >= (o.x())+o.getSpriteSIZE()&& 
+					this.y-o.getSpriteSIZE() <= o.y() &&
+					(this.y)+this.sprite.SIZE+o.getSpriteSIZE() >= (o.y())+o.getSpriteSIZE()){
 					/*System.out.println(" x - " + this.x + " o.x" + o.x());
 					System.out.println(" xsize - " + (this.x+this.sprite.SIZE) + " o.xsize" + (o.x()+o.getSpriteSIZE()));
 					System.out.println(" y - " + this.y + " o.y" + o.x());

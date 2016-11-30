@@ -156,7 +156,8 @@ public class Background extends Canvas implements Runnable{
 		g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
 		g.setColor(new Color(0xF2F6FF));
 		g.setFont(new Font("Hyperspace", 0, 16));
-		g.drawString("POINTS "+playerone.getPoints(), 450, 400);
+		g.drawString("POINTS PLAYER 1 -"+playerone.toString(), 20, 475);
+		g.drawString("POINTS PLAYER 2 -"+playertwo.toString(), 700, 475);
 		g.dispose();
 		bs.show();
 	}
