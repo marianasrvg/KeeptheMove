@@ -74,8 +74,9 @@ public class Player extends Mob {
 			y += ya;
 		} 
 		xy_tile.setXY(x, y);
-		System.out.println("xt:"+ xy_tile.x()+ " yt:" + xy_tile.y());
-		System.out.println("area "+ xy_tile.getArea());
+		//System.out.println("xt:"+ xy_tile.x()+ " yt:" + xy_tile.y());
+		//System.out.println("area "+ xy_tile.getArea());
+		
 		
 	}
 	
@@ -90,11 +91,18 @@ public class Player extends Mob {
 	}
 	
 	protected boolean collisionObstacles(){
+		Particle o;
 		boolean collision = false;
 		for(int i = 0; i < level.getObstacle().size(); i++){
 			if(level.getObstacle().get(i).xy_tile.getArea() 
 					== this.xy_tile.getArea()){
-				if(this.x <= level.getObstacle().get(i).x )
+				o = level.getObstacle().get(i);
+				if(this.x <= o.x() && 
+					(this.x)*this.sprite.SIZE >= (o.x())*o.getSpriteSIZE()&& 
+					this.y <= o.y() &&
+					(this.y)*this.sprite.SIZE >= (o.x())*o.getSpriteSIZE()){
+					System.out.println("Colision");
+				}
 			}
 		}
 		return collision;

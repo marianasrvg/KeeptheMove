@@ -78,14 +78,10 @@ public class Particle extends Entity {
 		screen.renderTile((int)x, (int)y, sprite);
 	}
 
-/*	protected boolean playerCollsion(double x, double y, int size){
-		boolean collision = false;
-		for(int i = 0; i < level.getEntity().size(); i++){
-			if(!(level.getEntity().get(i) instanceof Player)) continue;
-			if(level.getEntity().get(i).xy_tile.getArea() == this.xy_tile.getArea()){
-				checkCollision()
-			}
-		}
-		return collision;
-	}*/
+	public int x(){
+		return (int)x;
+	}
+	public int y(){
+		return (int)y;
+	}
 }
