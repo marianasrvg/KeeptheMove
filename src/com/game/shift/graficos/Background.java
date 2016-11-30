@@ -203,6 +203,7 @@ public class Background extends Canvas implements Runnable{
 	public void showEnd(){
 		if(running == false){
 			level.clearList();
+			bonus.clearList();
 			this.setVisible(false);
 			frame.setVisible(false);
 			new GameOver(myMenu, this).showMe();
