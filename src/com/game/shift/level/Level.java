@@ -128,4 +128,9 @@ public class Level {
 		}		
 		return solid;
 	}
+
+	public void clearList(){
+		obstacles.removeAll(obstacles);
+		entities.removeAll(entities);
+	}
 }

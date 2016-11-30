@@ -6,9 +6,7 @@ import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
-
 import javax.swing.*;
-
 import com.game.shift.Screen;
 import com.game.shift.Timing;
 import com.game.shift.entity.mob.PlayerOne;
@@ -145,6 +143,7 @@ public class Background extends Canvas implements Runnable{
 		playerone.update();
 		playertwo.update();
 		level.update();
+		bonus.activate();
 		if(bonus.isActive()) bonus.update();
 	}
 	
@@ -202,6 +201,7 @@ public class Background extends Canvas implements Runnable{
 	}
 	public void showEnd(){
 		if(running == false){
+			level.clearList();
 			this.setVisible(false);
 			frame.setVisible(false);
 			new GameOver(myMenu, this).showMe();

@@ -18,7 +18,7 @@ public class Bonus extends Particle {
 	public Bonus(int x, int y, Level level){
 		super(x, y, level);
 		this.sprite = Sprite.bonus_t;
-		speed = 3;
+		speed = 1.5;
 		sprite = Sprite.bonus_t;
 		nx = speed * Math.cos(angle);
 		ny = speed * Math.sin(angle);
@@ -43,11 +43,11 @@ public class Bonus extends Particle {
 		return (int)(random.nextDouble()*(Background.getWidthS()-32)+16);
 	}
 	public void update(){
-		
+		move();
 	}
 	
 	public void move(){
-		if (level.tileCollision(x, y, nx, ny, sprite.SIZE)){
+		if (level.tileCollision_Bonus(x, y, nx, ny, sprite.SIZE)){
 			double xangle = 90 - this.angle;
 			this.angle = -xangle;
 			nx = speed * Math.cos(angle);
