@@ -80,6 +80,21 @@ public class Level {
 		if (tiles[x+y*width] == Tile.C_WALL) return Tile.wall;
 		return Tile.voidTile;
 	}
+	
+	public Tile getTile_Bonus(int x, int y){
+		if( x < 0 || y < 0 || x >= width || y >= height) return Tile.voidTile;
+		if (tiles[x+y*width] == Tile.C_UNIVERSE) return Tile.universe;
+		if (tiles[x+y*width] == Tile.C_DOWNBORDER) return Tile.down_border;
+		if (tiles[x+y*width] == Tile.C_LEFTBORDER) return Tile.left_border;
+		if (tiles[x+y*width] == Tile.C_TOPBORDER) return Tile.top_border;
+		if (tiles[x+y*width] == Tile.C_RIGHTBORDER) return Tile.right_border;
+		if (tiles[x+y*width] == Tile.C_C_LD) return Tile.corner_ld;
+		if (tiles[x+y*width] == Tile.C_C_RD) return Tile.corner_rd;
+		if (tiles[x+y*width] == Tile.C_C_LU) return Tile.corner_lu;
+		if (tiles[x+y*width] == Tile.C_C_RU) return Tile.corner_ru;
+		if (tiles[x+y*width] == Tile.C_WALL) return Tile.universe;
+		return Tile.voidTile;
+	}
 
 	public void add(Entity e){
 		entities.add(e);
@@ -100,6 +115,16 @@ public class Level {
 			int xt = (((int)x+(int)xa) + c % 2 * size)/16;
 			int yt = (((int)y+(int)ya) + c / 2 * size)/16;
 			if(getTile(xt,yt).solid()) solid = true;;
+		}		
+		return solid;
+	}
+	
+	public boolean tileCollision_Bonus(double x, double y, double xa, double ya, int size){
+		boolean solid = false;
+		for(int c = 0; c <4; c++){
+			int xt = (((int)x+(int)xa) + c % 2 * size)/16;
+			int yt = (((int)y+(int)ya) + c / 2 * size)/16;
+			if(getTile_Bonus(xt,yt).solid()) solid = true;;
 		}		
 		return solid;
 	}
