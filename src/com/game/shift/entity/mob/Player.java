@@ -8,18 +8,18 @@ import com.game.shift.entity.obstacle.Particle;
 import com.game.shift.graficos.Background;
 import com.game.shift.graficos.Sprite;
 import com.game.shift.input.Keyboard;
-import com.game.shift.level.Level;
 
 public class Player extends Mob {
 	protected Keyboard input;
 	protected int points;
 	protected final int MAX_POINT = 100;
 	protected Background world;
-	protected int minusObstacle = 0;
+	protected int minusObstacle = -1;
 	protected int minusWall = -5;
 	protected Timing timer_b = new Timing();
 	protected int timing = 600;
 	protected boolean bonus_active = false;
+	protected String news = "";
 
 	public Player(Keyboard input, Background world) {
 		this.input = input;
@@ -95,7 +95,7 @@ public class Player extends Mob {
 					(this.x)+this.sprite.SIZE+o.getSpriteSIZE() >= (o.x())+o.getSpriteSIZE()&& 
 					this.y-o.getSpriteSIZE() <= o.y() &&
 					(this.y)+this.sprite.SIZE+o.getSpriteSIZE() >= (o.y())+o.getSpriteSIZE()){
-					collision = true;
+						collision = true;
 					}
 				}
 			}
@@ -122,21 +122,25 @@ public class Player extends Mob {
 		}
 
 	protected void chooseBonus(){
-		int r = (int)(random.nextDouble()*3);
+		int r = (int)(random.nextDouble()*4);
 		switch (r){
 		case 0:
 			BonusMorePoints();
+			this.news = "+10 POINTS";
 			break;
 		case 1:
 			Immunity();
+			this.news = "10' IMMUNITY";
 			bonus_active = true;
 			break;
 		case 2:
 			ChangeMap();
+			this.news = "10' MORE FIELD";
 			bonus_active = true;
 			break;
 		case 3:
 			ColorChange();
+			this.news = "10' COLOR CHANGE";
 			bonus_active = true;
 			break;
 		}
@@ -144,12 +148,12 @@ public class Player extends Mob {
 	}
 
 	protected void ColorChange() {
+		world.obstacles.changeSprite(Sprite.obstaculo_pink);
 	}
 
 	protected void Immunity() {
 		minusWall = 0;
 		minusObstacle = 0;
-		System.out.println("BONUS IMMUNITY");
 	}
 
 	protected void ChangeMap() {
@@ -158,14 +162,22 @@ public class Player extends Mob {
 
 	protected void BonusMorePoints() {
 		setPoints(10);
-		System.out.println("BONUS + 10");
 	}
 	
 	protected void reverseBonus(){
 		timing = 600;
 		minusWall = -5;
-		minusObstacle = 0;
+		minusObstacle = -1;
 		world.level.loadLevel("/levels/level.png");
+		world.obstacles.changeSprite(Sprite.obstaculo_green);
+		setSprite(Sprite.player);
+		this.news = "";
 	}
 
+	protected void setSprite(){
+	}
+
+	public String getNews(){
+		return news;
+	}
 }

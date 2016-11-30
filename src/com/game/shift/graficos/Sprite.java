@@ -22,18 +22,13 @@ public class Sprite {
 	public static Sprite corner_ru = new Sprite(16, 8, 0, SpriteSheet.tiles);
 	public static Sprite wall = new Sprite(16, 9, 0, SpriteSheet.tiles);
 
-	
 	public static Sprite player = new Sprite(8, 0, 0, SpriteSheet.player, 5);
 	
-	public static Sprite obstaculo_blue = new Sprite (4, 1, 0, SpriteSheet.bolitas);
 	
+	public static Sprite obstaculo_green = new Sprite (4, 1, 0, SpriteSheet.bolitas);
 	public static Sprite obstaculo_pink = new Sprite (4, 2, 0, SpriteSheet.bolitas, 2);
 	public static Sprite obstaculo_yellow = new Sprite (4, 2, 2, SpriteSheet.bolitas, 9);
-	public static Sprite informacion = new Sprite (16,3,2, SpriteSheet.tiles, 7);
 	public static Sprite bonus_t = new Sprite(6,0,0,SpriteSheet.bonus, 6);
-	public static Sprite contorno = new Sprite(16,0,2, SpriteSheet.tiles, 1);
-	public static Sprite arrow = new Sprite(16, 0, 3, SpriteSheet.tiles, 8);
-	public static Sprite player_b = new Sprite(16, 2, 3, SpriteSheet.tiles, 8);
 	
 	public Sprite(int size, int colour){
 		this.SIZE = size;

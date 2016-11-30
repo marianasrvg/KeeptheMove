@@ -88,4 +88,14 @@ public class Particle extends Entity {
 	protected static int randomY(){
 		return (int)(random.nextDouble()*(Background.getHeightS()-45)+ 16);
 	}
+	
+	public void changeSprite(Sprite sprite){
+		for(int i = 0; i < level.getObstacle().size(); i++){
+			level.getObstacle().get(i).setSprite(sprite);
+		}
+	}
+
+	private void setSprite(Sprite sprite) {
+		this.sprite = sprite;
+	}
 }

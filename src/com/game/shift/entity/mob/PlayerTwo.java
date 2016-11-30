@@ -17,7 +17,7 @@ public class PlayerTwo extends Player {
 	}
 		
 	public void update(){
-		if(collisionObstacles()){} setPoints(minusObstacle);
+		if(collisionObstacles()) setPoints(minusObstacle);
 		
 		if(collisionBonus()) chooseBonus();
 		if (bonus_active && timing == 0){

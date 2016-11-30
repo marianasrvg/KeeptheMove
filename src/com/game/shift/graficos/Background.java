@@ -36,7 +36,7 @@ public class Background extends Canvas implements Runnable{
 	public JFrame frame;
 	public PlayerOne playerone;
 	public PlayerTwo playertwo;
-	private Particle obstacles;
+	public Particle obstacles;
 	public Bonus bonus;
 	private Timing timer;
 	public Level level;
@@ -165,10 +165,12 @@ public class Background extends Canvas implements Runnable{
 		Graphics g = bs.getDrawGraphics();
 		g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
 		g.setColor(new Color(0xF2F6FF));
-		g.setFont(new Font("Hyperspace", 0, 16));
+		g.setFont(new Font("Hyperspace", 0, 18));
 		g.drawString("POINTS "+playerone.toString(), 30, 475);
 		g.drawString(playertwo.toString()+ " POINTS", 780, 475);
 		g.drawString(timer.timerString(), 440, 25);
+		g.drawString(playerone.getNews(), 110, 25);
+		g.drawString(playertwo.getNews(), 600, 25);
 		g.dispose();
 		bs.show();
 		if(playerone.getPoints() < 0 || playertwo.getPoints() < 0 || timer .getTime() == 0){

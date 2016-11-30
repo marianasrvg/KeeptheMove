@@ -45,4 +45,8 @@ public class PlayerOne extends Player {
 	protected void ChangeMap() {
 		world.level.loadLevel("/levels/level_1.png");
 	}
+	
+	protected void ColorChange() {
+		
+	}
 }
