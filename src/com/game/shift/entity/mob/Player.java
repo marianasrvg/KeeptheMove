@@ -122,18 +122,18 @@ public class Player extends Mob {
 		}
 
 	protected void chooseBonus(){
-		int r = (int)(random.nextDouble()*1);
+		int r = (int)(random.nextDouble()*4);
 		switch (r){
-		case 2:
+		case 0:
 			BonusMorePoints();
-			this.news = "+10 POINTS";
+			this.news = "+20 POINTS";
 			break;
 		case 1:
 			Immunity();
 			this.news = "10' IMMUNITY";
 			bonus_active = true;
 			break;
-		case 0:
+		case 2:
 			ChangeMap();
 			this.news = "10' MORE FIELD";
 			bonus_active = true;
@@ -160,7 +160,7 @@ public class Player extends Mob {
 	}
 
 	protected void BonusMorePoints() {
-		setPoints(10);
+		setPoints(20);
 	}
 	
 	protected void reverseBonus(){

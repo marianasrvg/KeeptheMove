@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -98,11 +99,11 @@
 -1
 -5
 =======
+=======
+>>>>>>> origin/master
 
-46
+-1
 <<<<<<< HEAD
--1
--1
 90
 48
 6
@@ -110,4 +111,8 @@
 =======
 >>>>>>> origin/master
 >>>>>>> origin/master
+>>>>>>> origin/master
+=======
+1
+33
 >>>>>>> origin/master
