@@ -48,7 +48,7 @@ public class Background extends Canvas implements Runnable{
 	private Screen screen;
 	private MainMenu myMenu;//Este si es necesario
 	
-	public Background(){
+	public Background(MainMenu menu){
 		Dimension size = new Dimension(width*scale, height*scale);
 		setPreferredSize(size);
 		
@@ -65,7 +65,7 @@ public class Background extends Canvas implements Runnable{
 		timer = new Timing();
 		bonus = new Bonus(1, level);
 		frameCaracteristicas();
-				
+		myMenu = menu;		
 	}
 	
 	private void frameCaracteristicas(){

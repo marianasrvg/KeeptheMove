@@ -41,8 +41,6 @@ public class MainMenu extends JFrame implements ActionListener{
 
 	
 	private void initComponents() throws UnsupportedAudioFileException, IOException, LineUnavailableException{
-		
-		Songs.playSongMenu();
 	
 		JPanel main = (JPanel) getContentPane();
 		
@@ -95,6 +93,8 @@ public class MainMenu extends JFrame implements ActionListener{
 		main.add(howTo);
 		//main.add(bye);
 		main.add(scores);
+		
+		//Songs.playSongMenu();
 	}
 	
 	
@@ -102,7 +102,7 @@ public class MainMenu extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		JButton j = (JButton) e.getSource();
 		if(j.equals(play)){
-			new Background().start();
+			new Background(this).start();
 			this.setVisible(false);
 		}
 		if(j.equals(howTo)){

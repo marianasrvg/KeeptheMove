@@ -13,6 +13,10 @@ public class Shift {
 		game.start();
 		*/
 		new MainMenu();
+<<<<<<< HEAD
 		//new GameOver(new MainMenu(), new Background());
+=======
+		Songs.playSongMenu();
+>>>>>>> origin/master
 	}
 }
