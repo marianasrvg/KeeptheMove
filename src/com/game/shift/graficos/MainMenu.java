@@ -20,7 +20,7 @@ public class MainMenu extends JFrame implements ActionListener{
 	private JButton howTo = new JButton("How to play"); //Boton para saber como se juega
 	//private JButton bye = new JButton("Exit game"); //Boton para salir del juego (en realidad este es inutil)
 
-	private JButton scores = new JButton("Players Scores"); //Boton para ver los 
+	private JButton scores = new JButton("Players Scores"); //Boton para ver los s
 	private JLabel animation1 = new JLabel("");
 	private JLabel animation2 = new JLabel("");
 	private JLabel animation3 = new JLabel("");
