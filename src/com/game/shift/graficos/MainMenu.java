@@ -28,8 +28,6 @@ public class MainMenu extends JFrame implements ActionListener{
 	private JLabel arrow3 = new JLabel("");
 	
 	public MainMenu() throws UnsupportedAudioFileException, IOException, LineUnavailableException{
-		ImageIcon myIcon = new ImageIcon("res/textures/mainIcon.gif");
-		this.setIconImage(myIcon.getImage());
 		this.setTitle("Keep the Move!");
 		this.setSize(900,500);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -51,6 +49,9 @@ public class MainMenu extends JFrame implements ActionListener{
 		ImageIcon anim2 = new ImageIcon("res/textures/rebote2.gif");
 		ImageIcon anim3 = new ImageIcon("res/textures/spiral.gif");
 		ImageIcon anim4 = new ImageIcon("res/textures/arrow.gif");
+		
+		ImageIcon myIcon = new ImageIcon("res/textures/mainIcon.gif");
+		this.setIconImage(myIcon.getImage());
 		
 		main.setLayout(null);
 		main.setBackground(Color.CYAN);
