@@ -50,6 +50,7 @@ public class PlayerOne extends Player {
 	}
 	
 	protected void ColorChange() {
+		setSprite(Sprite.player_bonus);
 		world.obstacles.changeSprite(Sprite.obstaculo_2);
 	}
 	

@@ -28,7 +28,7 @@ public class Sprite {
 	
 	public static Sprite obstaculo_1 = new Sprite (4, 0, 0, SpriteSheet.bolitas);
 	public static Sprite obstaculo_2 = new Sprite (4, 1, 0, SpriteSheet.bolitas);
-	public static Sprite obstaculo_3 = new Sprite (4, 3, 0, SpriteSheet.bolitas);
+	public static Sprite obstaculo_3 = new Sprite (4, 2, 0, SpriteSheet.bolitas);
 	public static Sprite bonus_t = new Sprite(6,1,0,SpriteSheet.bonus);
 	
 	public Sprite(int size, int colour){
