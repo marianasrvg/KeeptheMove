@@ -16,10 +16,10 @@ public class GameOver extends JFrame implements ActionListener{
 	 */
 	private static final long serialVersionUID = 1L;
 	private JLabel gameTitle = new JLabel("");
-	private JLabel pScoreJ1 = new JLabel("Score J1");
+	private JLabel pScoreJ1 = new JLabel("Score P1");
 	private JLabel sJ1 = new JLabel("");
 	private JLabel sJ2 = new JLabel("");
-	private JLabel pScoreJ2 = new JLabel("Score J2");
+	private JLabel pScoreJ2 = new JLabel("Score P2");
 	private JButton goBack = new JButton("Back to main menu");
 	private MainMenu goMenu;
 	private Background bck;

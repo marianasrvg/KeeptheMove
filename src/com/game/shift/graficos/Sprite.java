@@ -22,13 +22,14 @@ public class Sprite {
 	public static Sprite corner_ru = new Sprite(16, 8, 0, SpriteSheet.tiles);
 	public static Sprite wall = new Sprite(16, 9, 0, SpriteSheet.tiles);
 
-	public static Sprite player = new Sprite(8, 0, 0, SpriteSheet.player, 5);
+	public static Sprite player = new Sprite(8, 0, 0, SpriteSheet.player);
+	public static Sprite player_bonus = new Sprite(8, 0, 1, SpriteSheet.player);
 	
 	
-	public static Sprite obstaculo_green = new Sprite (4, 1, 0, SpriteSheet.bolitas);
-	public static Sprite obstaculo_pink = new Sprite (4, 2, 0, SpriteSheet.bolitas, 2);
-	public static Sprite obstaculo_yellow = new Sprite (4, 2, 2, SpriteSheet.bolitas, 9);
-	public static Sprite bonus_t = new Sprite(6,0,0,SpriteSheet.bonus, 6);
+	public static Sprite obstaculo_1 = new Sprite (4, 0, 0, SpriteSheet.bolitas);
+	public static Sprite obstaculo_2 = new Sprite (4, 1, 0, SpriteSheet.bolitas);
+	public static Sprite obstaculo_3 = new Sprite (4, 3, 0, SpriteSheet.bolitas);
+	public static Sprite bonus_t = new Sprite(6,1,0,SpriteSheet.bonus);
 	
 	public Sprite(int size, int colour){
 		this.SIZE = size;
@@ -54,16 +55,6 @@ public class Sprite {
 		this.width = size;
 		this.height = size;
 		this.sheet = sheet;
-		load();
-	}
-	
-	public Sprite(int size, int x, int y, SpriteSheet sheet, int id){
-		SIZE = size;
-		pixels = new int [SIZE*SIZE];
-		this.x = x*SIZE;
-		this.y = y*SIZE;
-		this.sheet = sheet;
-		this.id = id;
 		load();
 	}
 	

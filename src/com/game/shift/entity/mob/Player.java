@@ -148,7 +148,6 @@ public class Player extends Mob {
 	}
 
 	protected void ColorChange() {
-		world.obstacles.changeSprite(Sprite.obstaculo_pink);
 	}
 
 	protected void Immunity() {
@@ -169,12 +168,13 @@ public class Player extends Mob {
 		minusWall = -5;
 		minusObstacle = -1;
 		world.level.loadLevel("/levels/level.png");
-		world.obstacles.changeSprite(Sprite.obstaculo_green);
+		world.obstacles.changeSprite(Sprite.obstaculo_1);
 		setSprite(Sprite.player);
 		this.news = "";
 	}
 
 	protected void setSprite(){
+		this.sprite = Sprite.player_bonus;
 	}
 
 	public String getNews(){
