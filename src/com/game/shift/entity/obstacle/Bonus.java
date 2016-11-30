@@ -18,7 +18,7 @@ public class Bonus extends Particle {
 	public Bonus(int x, int y, Level level){
 		super(x, y, level);
 		this.sprite = Sprite.bonus_t;
-		speed = 1.5;
+		speed = 1;
 		sprite = Sprite.bonus_t;
 		nx = speed * Math.cos(angle);
 		ny = speed * Math.sin(angle);

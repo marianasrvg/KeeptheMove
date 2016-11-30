@@ -20,7 +20,8 @@ public class PlayerTwo extends Player {
 	}
 		
 	public void update(){
-		if(collisionObstacles()) setPoints(-1);
+		if(collisionObstacles()){} setPoints(0);
+		collisionBonus();
 		int xa = 0, ya = 0;
 		if(input.up2) ya--;
 		if(input.down2) ya++;

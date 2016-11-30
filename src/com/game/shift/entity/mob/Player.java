@@ -18,6 +18,7 @@ public class Player extends Mob {
 		this.sprite = Sprite.player;
 		this.points = MAX_POINT;
 		this.bonus = bonus;
+		System.out.println(bonus.x());
 	}
 
 	public Player(int x, int y, Keyboard input) {
@@ -101,21 +102,24 @@ public class Player extends Mob {
 		return collision;
 	}
 	
-	protected void collisionBonous(){
+	protected void collisionBonus(){
 		Bonus b;
+		System.out.println(bonus.getBonus().size());
 		for(int i = 0; i < bonus.getBonus().size(); i++){
+			System.out.println("IN");
 			if (bonus.getBonus().get(i).xy_tile.getArea() == this.xy_tile.getArea()) {
 				b = bonus.getBonus().get(i);
 				if(this.x-b.getSpriteSIZE() <= b.x() && 
 					(this.x)+this.sprite.SIZE+b.getSpriteSIZE() >= (b.x())+b.getSpriteSIZE()&& 
 					this.y-b.getSpriteSIZE() <= b.y() &&
 					(this.y)+this.sprite.SIZE+b.getSpriteSIZE() >= (b.y())+b.getSpriteSIZE()){
-					/*System.out.println(" x - " + this.x + " o.x" + o.x());
-					System.out.println(" xsize - " + (this.x+this.sprite.SIZE) + " o.xsize" + (o.x()+o.getSpriteSIZE()));
-					System.out.println(" y - " + this.y + " o.y" + o.x());
-					System.out.println(" ysize - " + (this.y+this.sprite.SIZE) + " o.ysize" + (o.y()+o.getSpriteSIZE()));*/
+				/*	System.out.println(" x - " + this.x + " o.x" +b.x());
+					System.out.println(" xsize - " + (this.x+this.sprite.SIZE) + " o.xsize" + (b.x()+b.getSpriteSIZE()));
+					System.out.println(" y - " + this.y + " o.y" + b.x());
+					System.out.println(" ysize - " + (this.y+this.sprite.SIZE) + " o.ysize" + (b.y()+b.getSpriteSIZE()));*/
 					//setPoints(-1);
-					//bonus.taken = true;
+					System.out.println("colision");
+					bonus.setActive(false);
 					}
 				}
 			}
