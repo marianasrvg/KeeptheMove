@@ -37,7 +37,7 @@ public class Background extends Canvas implements Runnable{
 	public PlayerOne playerone;
 	public PlayerTwo playertwo;
 	private Particle obstacles;
-	private Timing timer;
+	//private Timing timer;
 	private Level level;
 	
 	private BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
@@ -161,8 +161,12 @@ public class Background extends Canvas implements Runnable{
 		g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
 		g.setColor(new Color(0xF2F6FF));
 		g.setFont(new Font("Hyperspace", 0, 16));
-<<<<<<< HEAD
 		g.drawString("POINTS "+playerone.getPoints(), 450, 400);
+		g.dispose();
+		bs.show();
+		g.drawString("POINTS PLAYER 1 -"+playerone.toString(), 20, 475);
+		g.drawString("POINTS PLAYER 2 -"+playertwo.toString(), 700, 475);
+		g.drawString(timer.timerString(), 440, 25);
 		g.dispose();
 		bs.show();
 		if(playerone.getPoints() < 0 || playertwo.getPoints() < 0 || timer .getTime() == 0){
@@ -170,14 +174,7 @@ public class Background extends Canvas implements Runnable{
 			this.writeScores();
 			this.showEnd();
 		}
-=======
-		g.drawString("POINTS PLAYER 1 -"+playerone.toString(), 20, 475);
-		g.drawString("POINTS PLAYER 2 -"+playertwo.toString(), 700, 475);
-		g.drawString(timer.timerString(), 440, 25);
-		g.dispose();
-		bs.show();
-		
->>>>>>> origin/master
+	
 	}
 	
 	public void writeScores(){
