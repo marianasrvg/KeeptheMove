@@ -90,6 +90,9 @@ public class Level {
 	public List<Particle> getObstacle(){
 		return obstacles;
 	}
+	public List<Entity> getEntity(){
+		return entities;
+	}
 	
 	public boolean tileCollision(double x, double y, double xa, double ya, int size){
 		boolean solid = false;

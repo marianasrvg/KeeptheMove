@@ -58,6 +58,8 @@ public class Background extends Canvas implements Runnable{
 		
 		playerone = new PlayerOne(key);
 		playerone.init(level);
+		playertwo = new PlayerTwo(key);
+		playertwo.init(level);
 		obstacles = new Obstacles(20, level);
 		
 		frameCaracteristicas();
@@ -137,6 +139,7 @@ public class Background extends Canvas implements Runnable{
 	public void update(){
 		key.update();
 		playerone.update(screen);
+		playertwo.update(screen);
 		level.update();
 	}
 	
@@ -149,6 +152,7 @@ public class Background extends Canvas implements Runnable{
 		
 		level.render(0, 0, screen);
 		playerone.render(screen);
+		playertwo.render(screen);
 		for(int i = 0; i < pixels.length; i++){
 			pixels[i] = screen.pixels[i];
 		}

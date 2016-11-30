@@ -4,6 +4,7 @@ import java.util.Random;
 
 import com.game.shift.Screen;
 import com.game.shift.level.Level;
+import com.game.shift.level.tiles.TileCoordinate;
 
 public class Entity {
 
@@ -11,6 +12,7 @@ public class Entity {
 	private boolean removed = false;
 	protected Level level;
 	protected final Random random = new Random();
+	public TileCoordinate xy_tile;
 	
 	public void update(){}
 	public void render(Screen screen){}

@@ -1,6 +1,5 @@
 package com.game.shift.entity.obstacle;
 
-import com.game.shift.Screen;
 import com.game.shift.graficos.Background;
 import com.game.shift.graficos.Sprite;
 import com.game.shift.level.Level;
@@ -9,7 +8,7 @@ public class Obstacles extends Particle{
 		
 	public Obstacles(int x, int y, Level level) {
 		super(x, y, level);
-		speed = 1;
+		speed = 1.2;
 		sprite = Sprite.obstaculo_blue;
 		nx = speed * Math.cos(angle);
 		ny = speed * Math.sin(angle);
@@ -38,7 +37,7 @@ public class Obstacles extends Particle{
 		return (int)(random.nextDouble()*(Background.getWidthS()/2-32) + (Background.getWidthS()/2+16));
 	}
 	private static int randomY(){
-		return (int)(random.nextDouble()*(Background.getHeightS()-45)+ 16);
+		return (int)(random.nextDouble()*(Background.getHeightS()-40)+ 16);
 	}
 	public void addObstacle(boolean field){
 		addObstacle(new Obstacles(randomX(field),randomY(), this.level));
