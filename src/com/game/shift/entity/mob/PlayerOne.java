@@ -1,5 +1,6 @@
 package com.game.shift.entity.mob;
 
+import com.game.shift.entity.obstacle.Particle;
 import com.game.shift.graficos.Background;
 import com.game.shift.graficos.Sprite;
 import com.game.shift.input.Keyboard;
@@ -44,10 +45,33 @@ public class PlayerOne extends Player {
 	}
 	
 	protected void ChangeMap() {
+		moveTheWall();
 		world.level.loadLevel("/levels/level_1.png");
 	}
 	
 	protected void ColorChange() {
 		world.obstacles.changeSprite(Sprite.obstaculo_2);
+	}
+	
+	protected void moveTheWall(){
+		Particle o;
+		for(int i = 0; i < level.getObstacle().size(); i++){
+			if (level.getObstacle().get(i).xy_tile.getArea() == 5 ||
+					level.getObstacle().get(i).xy_tile.getArea() == 7) {
+				o = level.getObstacle().get(i);
+				o.setX(o.x()+17);
+			}
+		}
+	}
+	
+	protected void returnTheWall(){
+		Particle o;
+		for(int i = 0; i < level.getObstacle().size(); i++){
+			if (level.getObstacle().get(i).xy_tile.getArea() == 2 ||
+					level.getObstacle().get(i).xy_tile.getArea() == 4) {
+				o = level.getObstacle().get(i);
+				o.setX(o.x()-17);
+			}
+		}
 	}
 }
