@@ -1,0 +1,8 @@
+com.game.shift
+com.game.shift.entity
+com.game.shift.entity.mob
+com.game.shift.entity.obstacle
+com.game.shift.graficos
+com.game.shift.input
+com.game.shift.level
+com.game.shift.level.tiles
