@@ -51,6 +51,7 @@ public class PlayerTwo extends Player {
 	}
 	
 	protected void ColorChange() {
+		setSprite(Sprite.player_bonus);
 		world.obstacles.changeSprite(Sprite.obstaculo_3);
 	}
 	
@@ -60,7 +61,7 @@ public class PlayerTwo extends Player {
 			if (level.getObstacle().get(i).xy_tile.getArea() == 2 ||
 					level.getObstacle().get(i).xy_tile.getArea() == 4) {
 				o = level.getObstacle().get(i);
-				o.setX(o.x()-20);
+				o.setX((int)o.x()-20);
 			}
 		}
 	}
@@ -71,7 +72,7 @@ public class PlayerTwo extends Player {
 			if (level.getObstacle().get(i).xy_tile.getArea() == 5 ||
 					level.getObstacle().get(i).xy_tile.getArea() == 7) {
 				o = level.getObstacle().get(i);
-				o.setX(o.x()+20);
+				o.setX((int)o.x()+20);
 			}
 		}
 	}
